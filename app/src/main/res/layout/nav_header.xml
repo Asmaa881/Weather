@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="32dp"
+    android:orientation="vertical"
+    android:background="@drawable/nav_header_background"
+    android:gravity="bottom">
+
+   <de.hdodenhof.circleimageview.CircleImageView
+       android:id="@+id/header_app_icon"
+       android:layout_width="70dp"
+       android:layout_height="70dp"
+       android:src="@drawable/icon"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       />
+    <TextView
+        android:id="@+id/header_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        android:layout_marginStart="20dp"
+        android:text=" Weather..\n Dashboard"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toEndOf="@+id/header_app_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="86dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            >
+            <TextView
+                android:id="@+id/txtChooseYourLocation"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintWidth_percent="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="Choose Your Location!!!"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textAlignment="center"
+                />
+            <RadioGroup
+                android:id="@+id/radioGroupOptions"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintWidth_percent="0.8"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtChooseYourLocation"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                >
+            <RadioButton
+                android:id="@+id/radioGps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/gps"
+                />
+            <!--
+            android:background="@drawable/radio_selector"
+                android:button="@color/transparent"
+                android:textColor="@drawable/radio_text_color"
+                _______________________________
+                android:background="@drawable/radio_selector"
+                android:button="@color/transparent"
+                android:textColor="@drawable/radio_text_color"
+            -->
+            <RadioButton
+                android:id="@+id/radioMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/map"
+                />
+        </RadioGroup>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dialogOkBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="48dp"
+                android:backgroundTintMode="src_over"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/ok"
+                android:textSize="22sp"
+                app:backgroundTint="@color/teal_700"
+                app:cornerRadius="100dp"
+                app:iconGravity="end"
+                app:iconPadding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/radioGroupOptions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

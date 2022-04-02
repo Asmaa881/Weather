@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable-v24/ic_baseline_home_24.xml" value="0.2890625" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable-v24/nav_header_background.xml" value="0.1984375" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/activity_home.xml" value="0.18229166666666666" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/activity_main.xml" value="0.16822916666666668" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/activity_maps.xml" value="0.1412037037037037" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/favorite_row.xml" value="0.1337962962962963" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_alerts.xml" value="0.18229166666666666" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_favorite.xml" value="0.18229166666666666" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_home.xml" value="0.18229166666666666" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_setting.xml" value="0.18229166666666666" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/location_dialog.xml" value="0.18229166666666666" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/nav_header.xml" value="0.18229166666666666" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/seven_days_recyclerview_row.xml" value="0.13020833333333334" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/twenty_four_hours_recyclerview_raw.xml" value="0.17083333333333334" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/menu/nav_menu.xml" value="0.18229166666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
