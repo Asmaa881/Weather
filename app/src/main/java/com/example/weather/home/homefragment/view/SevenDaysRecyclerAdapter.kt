@@ -22,6 +22,7 @@ class SevenDaysRecyclerAdapter : RecyclerView.Adapter<SevenDaysRecyclerAdapter.V
 
     var weatherSevenDays: List<Daily> = ArrayList<Daily>()
     lateinit var context: Context
+    lateinit var tempMeasure: String
 
     fun setData(context: Context, weatherSevenDaysItem: List<Daily>){
         this.context= context
@@ -51,7 +52,31 @@ class SevenDaysRecyclerAdapter : RecyclerView.Adapter<SevenDaysRecyclerAdapter.V
         var format = Date(cuurentDay.dt!!*1000)
         //var dayName = simpleDateFormat.format(format)
         holder.txtDayName.text = simpleDateFormat.format(format)
-        holder.txtDayTemp.text  = "${cuurentDay.temp?.max.toString()} / ${cuurentDay.temp?.min.toString()} \u2103"
+       // "${(((currentHour.temp!! - 273.25) * (9 / 5)) + 32).toInt()} \u2109"
+        var tempMax= 0
+        var tempMin= 0
+
+        if(HomeFragment.sharedPreferences.getString("tempMeasure","")== "C"){
+            tempMax = (cuurentDay.temp!!.max!! - 273.15).toInt()
+            tempMin = (cuurentDay.temp!!.min!! - 273.15).toInt()
+            tempMeasure = "${tempMax} / ${tempMin} \u2103"
+        }
+        else if(HomeFragment.sharedPreferences.getString("tempMeasure","")== "F"){
+            tempMax = (((cuurentDay.temp!!.max!! - 273.15) * (9 / 5)) + 32).toInt()
+            tempMin = (((cuurentDay.temp!!.min!! - 273.15) * (9 / 5)) + 32).toInt()
+            tempMeasure = "${tempMax} / ${tempMin} ℉"
+        }
+        else if(HomeFragment.sharedPreferences.getString("tempMeasure","")== "K"){
+            tempMax = (cuurentDay.temp!!.max!!).toInt()
+            tempMin = (cuurentDay.temp!!.min!!).toInt()
+            tempMeasure = "${tempMax} / ${tempMin} K"
+        }
+        else{
+            tempMax = (((cuurentDay.temp!!.max!! - 273.15) * (9 / 5)) + 32).toInt()
+            tempMin = (((cuurentDay.temp!!.min!! - 273.15) * (9 / 5)) + 32).toInt()
+            tempMeasure = "${tempMax} / ${tempMin} ℉"
+        }
+        holder.txtDayTemp.text = tempMeasure
         holder.txtDayWeatherDescription.text = cuurentDay.weather[0].description
         var iconLink = "https://openweathermap.org/img/w/${cuurentDay.weather[0].icon}.png"
          Glide.with(context).load(iconLink).error(R.drawable.icon)

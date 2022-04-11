@@ -1,12 +1,14 @@
 package com.example.weather.home.db
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
+import androidx.room.TypeConverter
+import com.example.weather.home.model.AlertsStored
 import com.example.weather.home.model.FavoriteStored
+import com.example.weather.home.model.ResponseModel
 
-@Database(entities = [FavoriteStored::class], version = 1)
+@Database(entities = [FavoriteStored::class, AlertsStored:: class, ResponseModel::class], version = 10)
+@TypeConverters(TypeConvertersRoom::class)
 abstract class AppDataBase : RoomDatabase() {
 
     abstract fun weatherDAO(): WeatherDAOInterface

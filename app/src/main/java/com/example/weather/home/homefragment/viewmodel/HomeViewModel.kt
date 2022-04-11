@@ -11,25 +11,36 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeViewModel (iRepo: RepositoryInterface, var lat :Double, var lon:Double, var apiKey:String) : ViewModel(){
+class HomeViewModel (iRepo: RepositoryInterface, var lat :Double, var lon:Double, var apiKey:String,var language:String) : ViewModel(){
 
     private val _iRepo : RepositoryInterface = iRepo
-    private val _movieList = MutableLiveData<List<ResponseModel>>()
+    private val weatherList = MutableLiveData<List<ResponseModel>>()
 
     init {
         getWeather()
     }
     //Expose returned online Data
-    val onlineWeather: LiveData<List<ResponseModel>> = _movieList
+    val onlineWeather: LiveData<List<ResponseModel>> = weatherList
     fun getWeather(){
         viewModelScope.launch{
-            val weather = _iRepo.getNetworkWeather(lat, lon,apiKey)
+            val weather = _iRepo.getNetworkWeather(lat, lon,apiKey,language)
             withContext(Dispatchers.Main){
-                //Log.i("TAG", "view Model: ${weather}")
-                _movieList.postValue(listOf(weather))
+                weatherList.postValue(listOf(weather))
             }
         }
     }
+
+    //// weather info
+    fun saveWeatherToRoom(responseModel: ResponseModel) {
+        viewModelScope.launch(Dispatchers.IO){
+            _iRepo.insertWeather(responseModel)
+        }
+    }
+    fun getWeatherFromRoom(): LiveData<ResponseModel> {
+        return _iRepo.storedWeather
+    }
+
+
 
 
     override fun onCleared() {

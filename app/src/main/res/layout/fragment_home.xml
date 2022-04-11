@@ -1,76 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.homefragment.view.HomeFragment">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cityDateTimeLayout"
+    tools:context=".home.homefragment.view.HomeFragment"
+    android:background="@color/background"
+    android:id="@+id/rlLayout"
+    >
+    <TextView
+        android:id="@+id/txtCityName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:padding="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/txtCityName"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="City"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtCurrentDateTime"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="28/3/2022\n 8:40 pm"
-            android:textAlignment="center"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtCityName"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
+        android:gravity="center"
+        android:text="City"
+        android:textColor="@color/second_color"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginVertical="4dp"/>
+    <TextView
+        android:id="@+id/txtCurrentDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtCityName"
+        android:layout_marginVertical="2dp"
+        android:gravity="center"
+        android:text="28/3/2022\n 8:40 pm"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="22sp" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityDateTimeLayout"
-        >
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_below="@id/txtCurrentDateTime" >
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-            <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_height="match_parent">
+
+            <ImageView
                 android:id="@+id/weather_icon"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/icon"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.047" />
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewTemprature"
                 android:layout_width="match_parent"
@@ -78,9 +57,9 @@
                 android:layout_marginHorizontal="14dp"
                 android:foregroundGravity="center"
                 app:cardCornerRadius="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_icon">
+                android:outlineAmbientShadowColor="@color/border_color"
+                android:outlineSpotShadowColor="@color/border_color"
+                android:layout_below="@id/weather_icon">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -94,12 +73,12 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:text="Description"
+                        android:textColor="@color/text_color"
                         android:textAlignment="center"
                         android:textSize="22sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
                     <TextView
                         android:id="@+id/txtTemperature"
                         android:layout_width="wrap_content"
@@ -107,6 +86,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
                         android:text="Temperature"
+                        android:textColor="@color/text_color"
                         android:textAlignment="center"
                         android:textSize="22sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -115,37 +95,31 @@
                         app:layout_constraintTop_toBottomOf="@id/txtWeatherDescription" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/nextTwentyFourHoursRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardViewTemprature" />
+                android:layout_below="@id/cardViewTemprature" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/nextSevenDaysRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nextTwentyFourHoursRecyclerView" />
-
+                android:layout_below="@id/nextTwentyFourHoursRecyclerView" />
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewWeatherDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="14dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
                 android:foregroundGravity="center"
                 app:cardCornerRadius="20dp"
-                android:layout_marginBottom="60dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nextSevenDaysRecyclerView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                >
+                android:layout_below="@id/nextSevenDaysRecyclerView"
+                android:outlineAmbientShadowColor="@color/border_color"
+                android:outlineSpotShadowColor="@color/border_color">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -158,87 +132,164 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:drawableTop="@drawable/ic_baseline_home_24"
-                        android:text="Wind Speed"
+                        android:layout_marginBottom="8dp"
+                        android:drawableTop="@drawable/wind"
                         android:textAlignment="center"
                         android:textSize="22sp"
+                        android:textColor="@color/text_color"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/txtWindSpeedText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/wind_speed"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtWindSpeed" />
                     <TextView
                         android:id="@+id/txtPressure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:drawableTop="@drawable/ic_baseline_home_24"
-                        android:text="Pressure"
+                        android:layout_marginTop="4dp"
+                        android:drawableTop="@drawable/pressure"
                         android:textAlignment="center"
                         android:textSize="22sp"
+                        android:textColor="@color/text_color"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/txtWindSpeed"
-                        app:layout_constraintTop_toBottomOf="@id/txtWindSpeed" />
+                        app:layout_constraintTop_toBottomOf="@id/txtWindSpeedText" />
+                    <TextView
+                        android:id="@+id/txtPressureText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/pressure"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txtWindSpeed"
+                        app:layout_constraintTop_toBottomOf="@id/txtPressure"/>
                     <TextView
                         android:id="@+id/txtClouds"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:drawableTop="@drawable/ic_baseline_home_24"
-                        android:text="Clouds"
+                        android:layout_marginBottom="8dp"
+                        android:drawableTop="@drawable/clouds"
                         android:textAlignment="center"
                         android:textSize="22sp"
+                        android:textColor="@color/text_color"
                         app:layout_constraintEnd_toStartOf="@+id/txtUltraViolet"
                         app:layout_constraintStart_toEndOf="@+id/txtWindSpeed"
                         app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/txtCloudsText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/clouds"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_color"
+                        app:layout_constraintEnd_toStartOf="@+id/txtUltraViolet"
+                        app:layout_constraintStart_toEndOf="@+id/txtWindSpeed"
+                        app:layout_constraintTop_toBottomOf="@id/txtClouds" />
                     <TextView
                         android:id="@+id/txtHumidity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:drawableTop="@drawable/ic_baseline_home_24"
-                        android:text="Humidity"
+                        android:drawableTop="@drawable/humidity"
                         android:textAlignment="center"
                         android:textSize="22sp"
+                        android:textColor="@color/text_color"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/txtClouds"
                         app:layout_constraintTop_toBottomOf="@id/txtClouds" />
+                    <TextView
+                        android:id="@+id/txtHumidityText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/humidity"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txtClouds"
+                        app:layout_constraintTop_toBottomOf="@id/txtHumidity" />
                     <TextView
                         android:id="@+id/txtUltraViolet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:drawableTop="@drawable/ic_baseline_home_24"
-                        android:text="Ultra Violet"
+                        android:layout_marginBottom="8dp"
+                        android:drawableTop="@drawable/ultra_violet"
                         android:textAlignment="center"
                         android:textSize="22sp"
+                        android:textColor="@color/text_color"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/txtClouds"
                         app:layout_constraintTop_toTopOf="parent"  />
+                    <TextView
+                        android:id="@+id/txtUltraVioletText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/ultra_violet"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txtClouds"
+                        app:layout_constraintTop_toBottomOf="@id/txtUltraViolet"  />
                     <TextView
                         android:id="@+id/txtVisibility"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:drawableTop="@drawable/ic_baseline_home_24"
-                        android:text="Visibility"
+                        android:drawableTop="@drawable/visibility"
                         android:textAlignment="center"
                         android:textSize="22sp"
+                        android:textColor="@color/text_color"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/txtUltraViolet"
                         app:layout_constraintTop_toBottomOf="@id/txtClouds" />
+                    <TextView
+                        android:id="@+id/txtVisibilityText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/visibility"
+                        android:textAlignment="center"
+                        android:textSize="22sp"
+                        android:textColor="@color/text_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txtUltraViolet"
+                        app:layout_constraintTop_toBottomOf="@id/txtVisibility" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:layout_constraintTop_toTopOf="@+id/cardViewWeatherDetails"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"Weather App "</string>
+    <string name="ok">موافق</string>
+    <string name="english">انجليزى</string>
+    <string name="arabic">عربى</string>
+    <string name="map">خريطة</string>
+    <string name="share">مشاركة</string>
+    <string name="settings">اعدادات</string>
+    <string name="alerts">تنبيهات</string>
+    <string name="favorite">المفضلة</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="share_my_app">مشاركة التطبيق</string>
+    <string name="open">فتح</string>
+    <string name="close">غلق</string>
+    <string name="wind_speed">سرعة الرياح</string>
+    <string name="location">الموقع</string>
+    <string name="meter_sec">متر/ ثانية</string>
+    <string name="temperature">درجة الحرارة</string>
+    <string name="celsius">مئوى</string>
+    <string name="language">اللغة</string>
+    <string name="disable">غير مععل</string>
+    <string name="done">تم</string>
+    <string name="enable">مفعل</string>
+    <string name="kelvin">كيلفن</string>
+    <string name="fahrenheit">الدرجة الفهرنهايتية</string>
+    <string name="mile_hour">ميلى/ ساعة</string>
+    <string name="alerts_amp_setting"><![CDATA[Alerts&Setting]]></string>
+    <string name="gps">تحديد الموقع</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="visibility">الرؤية</string>
+    <string name="ultra_violet">الأشعة الفوق بنفسجية </string>
+    <string name="humidity">الرطوبة</string>
+    <string name="pressure">الضغط</string>
+    <string name="clouds">السحاب</string>
+    <string name="selectstartdate">تاريخ البداية</string>
+    <string name="end_date">النهاية تاريخ</string>
+    <string name="select_location">حدد المكان</string>
+    <string name="select_time">حدد الوقت</string>
+</resources>

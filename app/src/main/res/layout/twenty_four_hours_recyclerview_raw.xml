@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginVertical="8dp"
     android:layout_marginStart="8dp"
     app:cardCornerRadius="40dp"
+    android:outlineAmbientShadowColor="@color/border_color"
+    android:outlineSpotShadowColor="@color/border_color"
     android:id="@+id/cardViewHourly">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="2 AM"
+            android:textColor="@color/text_color"
             android:textSize="18sp"
             android:layout_marginBottom="2dp"
             />
@@ -43,6 +47,7 @@
             app:layout_constraintTop_toBottomOf="@id/hourIcon"
             android:layout_marginBottom="2dp"
             android:text="33 "
+            android:textColor="@color/text_color"
             android:layout_marginTop="2dp"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>

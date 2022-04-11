@@ -1,35 +1,50 @@
 package com.example.weather.home.model
 
 import androidx.annotation.NonNull
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 
-//import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "FavoriteWeather")
 data class FavoriteStored(
     var lat:Double?= null,
     var lon:Double?= null,
-    var city_name:String?= null,
     @PrimaryKey
     @NonNull
-    var city_name_id:String= "${city_name}_${lat}_${lon}"
-
+    var city_name:String
 )
 
+@Entity(tableName = "AlertsWeather")
+data class AlertsStored(
+    var lat:Double?= null,
+    var lon:Double?= null,
+    var sDate: String? = null,
+    var eDate: String? = null,
+    var alertTime : String? = null,
+    @PrimaryKey
+    @NonNull
+    var city_name:String
+)
+
+@Entity(tableName = "ResponseWeather")
+@TypeConverters
 data class ResponseModel(
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    var id: Long,
     var lat: Double? = null,
     var lon: Double? = null,
-    var id: String = "${lat}_${lon}",
     var timezone: String? = null,
     var timezone_offset: Int? = null,
+    @Embedded
     var current: Current? = Current(),
-    var minutely: ArrayList<Minutely> = arrayListOf(),
     var hourly: ArrayList<Hourly> = arrayListOf(),
     var daily: ArrayList<Daily> = arrayListOf(),
-    var alerts: ArrayList<Alerts> = arrayListOf(),
-    var isFav: Boolean= false
+    var alerts: ArrayList<Alerts> = arrayListOf()
 )
+
 
 data class Current(
     var dt: Int? = null,
@@ -113,3 +128,4 @@ data class Alerts(
     var description: String? = null,
     var tags: ArrayList<String> = arrayListOf()
 )
+

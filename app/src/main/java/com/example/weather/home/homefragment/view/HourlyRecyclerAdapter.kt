@@ -11,6 +11,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.weather.R
+import com.example.weather.home.homefragment.view.HomeFragment.Companion.sharedPreferences
 import com.example.weather.home.model.Hourly
 import com.example.weather.home.model.ResponseModel
 import java.text.SimpleDateFormat
@@ -21,6 +22,7 @@ class HourlyRecyclerAdapter : RecyclerView.Adapter<HourlyRecyclerAdapter.ViewHol
 
     var weatherHourly: List<Hourly> = ArrayList<Hourly>()
     lateinit var context: Context
+    lateinit var tempMeasure :String
 
     fun setData(context: Context,weatherHourlyItem: List<Hourly>){
         this.context= context
@@ -40,9 +42,26 @@ class HourlyRecyclerAdapter : RecyclerView.Adapter<HourlyRecyclerAdapter.ViewHol
         val currentHour = weatherHourly[position]
         var simpleDateFormat = SimpleDateFormat("hh a")
         var format = Date(currentHour.dt!!*1000)
-       // var hour = simpleDateFormat.format(format)
         holder.txtHour.text = simpleDateFormat.format(format)
-        holder.txtHourTemp.text= currentHour.temp.toString()
+
+        if(sharedPreferences.getString("tempMeasure","")== "C"){
+            tempMeasure =
+                "${(currentHour.temp!! - 273.15).toInt()} \u2103"
+        }
+        else if(sharedPreferences.getString("tempMeasure","")== "F"){
+            tempMeasure =
+                "${(((currentHour.temp!! - 273.15) * (9 / 5)) + 32).toInt()} \u2109"
+        }
+        else if(sharedPreferences.getString("tempMeasure","")== "K"){
+            tempMeasure =
+                "${(currentHour.temp!!.toInt())} K"
+        }
+        else{
+            tempMeasure =
+            "${(((currentHour.temp!! - 273.15) * (9 / 5)) + 32).toInt()} \u2109"
+        }
+
+        holder.txtHourTemp.text= tempMeasure
         var iconLink = "https://openweathermap.org/img/w/${currentHour.weather[0].icon}.png"
         Glide.with(context).load(iconLink).error(R.drawable.icon)
             .into(holder.hourIcon)

@@ -1,60 +1,76 @@
 package com.example.weather.home.alertsfragment.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.R
+import com.example.weather.home.alertsfragment.viewmodel.AlertViewModel
+import com.example.weather.home.alertsfragment.viewmodel.AlertViewModelFactory
+import com.example.weather.home.db.ConcreteLocalSource
+import com.example.weather.home.favouritefragment.view.CommunicatorInterface
+import com.example.weather.home.model.AlertsStored
+import com.example.weather.home.model.WeatherRepository
+import com.example.weather.home.network.WeatherClient
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AlertsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AlertsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class AlertsFragment : Fragment(), OnItemClickListener {
+
+    private lateinit var communicatorInterface: CommunicatorInterface
+   lateinit var alertsRecyclerView: RecyclerView
+   lateinit var btnOpenAlertDialog: FloatingActionButton
+
+    lateinit var alertViewModel: AlertViewModel
+    lateinit var alertViewModelFactory: AlertViewModelFactory
+    lateinit var alertRecyclerViewAdapter: AlertRecyclerViewAdapter
+    lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        communicatorInterface = activity as CommunicatorInterface
+
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var view = inflater.inflate(R.layout.fragment_alerts, container, false)
+        alertsRecyclerView = view.findViewById(R.id.alertsRecyclerView)
+        btnOpenAlertDialog = view.findViewById(R.id.btnOpenAlertDialog)
+
+        linearLayoutManager=LinearLayoutManager(requireContext())
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL)
+        alertsRecyclerView.setLayoutManager(linearLayoutManager)
+        alertRecyclerViewAdapter= AlertRecyclerViewAdapter(this)
+        alertRecyclerViewAdapter.notifyDataSetChanged()
+        alertsRecyclerView.setAdapter(alertRecyclerViewAdapter)
+
+        alertViewModelFactory = AlertViewModelFactory(WeatherRepository.getInstance(
+            WeatherClient.getInstance(), ConcreteLocalSource(requireContext()),requireContext()))
+        alertViewModel = ViewModelProvider(this, alertViewModelFactory).get(AlertViewModel::class.java)
+
+        alertViewModel.getAllAlerts().observe(requireActivity()) { alerts ->
+            Log.i("TAG", "Observation: ${alerts}")
+            if (alerts != null)
+                alertRecyclerViewAdapter.setData(requireContext(),alerts)
+            alertRecyclerViewAdapter.notifyDataSetChanged()
         }
+
+        btnOpenAlertDialog.setOnClickListener(){
+            communicatorInterface.goToAlertDialog()
+        }
+        return view
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alerts, container, false)
+    override fun onClick(alertsStored: AlertsStored) {
+        alertViewModel.removeAlert(alertsStored)
+        alertRecyclerViewAdapter.notifyDataSetChanged()
+        Toast.makeText(requireContext(), "Deleted Successfully!!!", Toast.LENGTH_SHORT).show()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AlertsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AlertsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

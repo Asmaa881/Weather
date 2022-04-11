@@ -6,6 +6,7 @@
     app:cardCornerRadius="20dp"
     android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
     android:layout_gravity="center">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,11 +23,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:text="Choose Your Location!!!"
+                android:textColor="@color/text_color"
                 android:textStyle="bold"
                 android:textSize="22sp"
                 android:gravity="center"
-                android:textAlignment="center"
-                />
+                android:textAlignment="center" />
             <RadioGroup
                 android:id="@+id/radioGroupOptions"
                 android:layout_width="0dp"
@@ -46,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/gps"
+                android:textColor="@color/text_color"
                 />
             <!--
             android:background="@drawable/radio_selector"
@@ -62,9 +64,9 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/map"
+                android:textColor="@color/text_color"
                 />
         </RadioGroup>
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/dialogOkBtn"
                 android:layout_width="0dp"
@@ -83,7 +85,5 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintWidth_percent="0.3" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

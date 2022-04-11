@@ -5,18 +5,28 @@
       <map>
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable-v24/ic_baseline_home_24.xml" value="0.2890625" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable-v24/nav_header_background.xml" value="0.1984375" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable/ic_baseline_access_time_filled_24.xml" value="0.18127853881278538" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.18888888888888888" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable/ic_baseline_add_location_alt_24.xml" value="0.18127853881278538" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable/ic_baseline_date_range_24.xml" value="0.18127853881278538" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable/ic_baseline_notifications_active_24.xml" value="0.17123287671232876" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/drawable/ic_baseline_remove_circle_24.xml" value="0.2278538812785388" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/activity_home.xml" value="0.18229166666666666" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/activity_main.xml" value="0.16822916666666668" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/activity_maps.xml" value="0.1412037037037037" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/alerts_row.xml" value="0.1574074074074074" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/favorite_row.xml" value="0.1337962962962963" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_alert_dialog.xml" value="0.18888888888888888" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_alerts.xml" value="0.18229166666666666" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_favorite.xml" value="0.18229166666666666" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_favorite_details.xml" value="0.14351851851851852" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_home.xml" value="0.18229166666666666" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/fragment_setting.xml" value="0.18229166666666666" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/location_dialog.xml" value="0.18229166666666666" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/nav_header.xml" value="0.18229166666666666" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/seven_days_recyclerview_row.xml" value="0.13020833333333334" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/twenty_four_hours_recyclerview_raw.xml" value="0.17083333333333334" />
+        <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/layout/weather_alerts_dialog.xml" value="0.18888888888888888" />
         <entry key="..\:/Work Files/My projects/ITI Projects/Weather Kotlin/Weather/app/src/main/res/menu/nav_menu.xml" value="0.18229166666666666" />
       </map>
     </option>

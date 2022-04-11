@@ -15,7 +15,7 @@ import com.example.weather.R
 import com.example.weather.home.db.ConcreteLocalSource
 import com.example.weather.home.favouritefragment.viewmodel.FavoriteViewModel
 import com.example.weather.home.favouritefragment.viewmodel.FavoriteViewModelFactory
-import com.example.weather.home.homefragment.viewmodel.HomeViewModelFactory
+import com.example.weather.home.homefragment.view.HomeFragment
 import com.example.weather.home.model.FavoriteStored
 import com.example.weather.home.model.WeatherRepository
 import com.example.weather.home.network.WeatherClient
@@ -33,12 +33,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var fusedLocationProviderClient: FusedLocationProviderClient? = null
     var currentLocation : Location?= null
     var currentMarker: Marker? = null
-    var lat :Double? = null
-    var lon : Double? = null
+
     var cityName: String? = null
     lateinit var favFactory: FavoriteViewModelFactory
     lateinit var favViewModel: FavoriteViewModel
     lateinit var favoriteStored: FavoriteStored
+
+    companion object{
+        var lat :Double = 0.0
+        var lon : Double = 0.0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +81,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val latLng = LatLng(currentLocation?.latitude!!,currentLocation?.longitude!!)
+       // val latLng = LatLng(currentLocation?.latitude!!,currentLocation?.longitude!!)
        // drawMarker(latLng)
 
         mMap?.setOnMapClickListener(object : GoogleMap.OnMapClickListener{
@@ -89,7 +93,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 drawMarker(newLatLng)
             }
         })
-
     }
 
     private fun drawMarker(latLng: LatLng){
@@ -103,7 +106,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         lon = latLng.longitude
         var geoCoder = Geocoder(this, Locale.getDefault())
         var Adress = geoCoder.getFromLocation(lat!!, lon!!,2)
-        cityName = Adress.get(0).adminArea
+        cityName = "${Adress.get(0).adminArea}"
+
         Toast.makeText(this,"${lat}, $lon",Toast.LENGTH_SHORT).show()
             when(HomeActivity.opendMapFrom){
                 // Home
@@ -119,16 +123,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     favFactory = FavoriteViewModelFactory(WeatherRepository.getInstance(WeatherClient.getInstance(),
                         ConcreteLocalSource(this), this), lat!!, lon!!,"4fb359fbc087d60f9071faa71d7f6fbf")
                     favViewModel = ViewModelProvider(this, favFactory).get(FavoriteViewModel::class.java)
-                     favoriteStored= FavoriteStored(lat,lon,cityName)
+                     favoriteStored= FavoriteStored(lat,lon, cityName!!)
                     favViewModel.insertToFav(favoriteStored)
                     Toast.makeText(this, "Weather added!", Toast.LENGTH_SHORT).show()
-
                     val intent = Intent(this, HomeActivity()::class.java)
                     startActivity(intent)
-
                 }
                 // Setting
-                3 ->{}
+                3 -> {
+                    finish()
+                }
+                // Alerts
+                4 ->{
+                   finish()
+                }
             }
     }
 
@@ -137,6 +145,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val address = geocoder.getFromLocation(lat,lon,1)
        return address[0].getAddressLine(0).toString()
     }
-}
+
+    override fun onStop() {
+        super.onStop()
+        if (HomeActivity.opendMapFrom==3 && lat != 0.0 && lon != 0.0) {
+            HomeFragment.sharedPreferences.edit().putString("latitude", lat.toString())
+                .commit();
+            HomeFragment.sharedPreferences.edit().putString("longtitude", lon.toString())
+                .commit();
+        }
+    }
+
+    }
 
 

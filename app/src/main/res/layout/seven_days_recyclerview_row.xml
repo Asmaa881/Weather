@@ -8,6 +8,8 @@
     android:layout_marginHorizontal="8dp"
     app:cardCornerRadius="30dp"
     android:id="@+id/cardViewDays"
+    android:outlineAmbientShadowColor="@color/border_color"
+    android:outlineSpotShadowColor="@color/border_color"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,6 +23,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Tomorrow"
+            android:textColor="@color/text_color"
             android:layout_marginEnd="2dp"
             android:textSize="18sp"
             />
@@ -44,6 +47,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="4dp"
             android:text="Weather"
+            android:textColor="@color/text_color"
             />
 
         <TextView
@@ -54,11 +58,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="33 "
+            android:textColor="@color/text_color"
             />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 </androidx.cardview.widget.CardView>

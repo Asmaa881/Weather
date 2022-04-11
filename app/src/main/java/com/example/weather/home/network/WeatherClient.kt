@@ -10,9 +10,9 @@ class WeatherClient private constructor() : RemoteSourceInterface {
             return instance?: WeatherClient()
         }
     }
-    override suspend fun getWeatherOverNetwork(lat: Double, lon: Double, apiKey: String): ResponseModel {
+    override suspend fun getWeatherOverNetwork(lat: Double, lon: Double, apiKey: String,language:String): ResponseModel {
         val retrofitService = RetrofitHelper.getClient()?.create(RetrofitServiceInterface::class.java)
-        var response = retrofitService?.getWeather(lat,lon,apiKey)
+        var response = retrofitService?.getWeather(lat,lon,apiKey,language)
         return response!!
     }
 

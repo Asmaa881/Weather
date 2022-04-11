@@ -9,6 +9,6 @@ interface RetrofitServiceInterface {
 
     @GET("onecall")
     suspend fun getWeather(@Query("lat") lat :Double, @Query("lon") lon:Double,
-                           @Query("appid")apiKey:String): ResponseModel
+                           @Query("appid")apiKey:String,@Query("lang")language:String): ResponseModel
 
 }
